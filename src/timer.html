@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="timer">
+    <h1>Set timer</h1>
+    <input type="number" id="timerInput" placeholder="Enter time in seconds">
+    <button id="startTimer">Start timer</button>
+    <div id="countdown"></div>
+    <audio id="alertSound" src="https://www.soundjay.com/free-music/sounds/jungle-run-01.mp3" preload="auto"></audio>
+  </div>
+  <br>
+  <button class="go-home-button"  onclick="location.href='index.html'">Back to Home</button>
+</div>
+
+<script>
+  const startTimerButton = document.getElementById('startTimer');
+  const countdownDisplay = document.getElementById('countdown');
+  const alertSound = document.getElementById('alertSound');
+
+  startTimerButton.addEventListener('click', () => {
+    const timeInSeconds = document.getElementById('timerInput').value;
+    let remainingTime = timeInSeconds;
+    const timerInterval = setInterval(() => {
+      countdownDisplay.innerHTML = `Time left: ${remainingTime} seconds`;
+      if (remainingTime <= 0) {
+        clearInterval(timerInterval);
+        countdownDisplay.innerHTML = "Time's up!";
+        alertSound.play();
+      }
+      remainingTime--;
+    }, 1000);
+  });
+</script>
+</body>
+</html>
