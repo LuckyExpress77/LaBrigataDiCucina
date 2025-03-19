@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+  {% for recipe in recipes %}
+  <li>
+    <div class="recipe-card">
+      <a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.title }}</a>
+      <p>Posted by {{ recipe.author.username }} on {{ recipe.created_at }}</p>
+      <p>Likes: {{ recipe.likes.count }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

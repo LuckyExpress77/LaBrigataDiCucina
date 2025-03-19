@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<p>{{ recipe.body }}</p>
+<p>Posted by {{ recipe.author.username }} on {{ recipe.created_at }}</p>
+<p>Likes: {{ recipe.likes.count }}</p>
+
+<form action="{% url 'like-recipe' recipe.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit">
+    {% if request.user in recipe.likes.all %}
+    Unlike
+    {% else %}
+    Like
+    {% endif %}
+  </button>
+</form>
+
+<h2>Comments</h2>
+<ul>
+  {% for comment in recipe.comments.all %}
+  <li>{{ comment.comment }} - <strong>{{ comment.author.username }}</strong> on {{ comment.created_at }}</li>
+  {% empty %}
+  <li>No comments yet.</li>
+  {% endfor %}
+</ul>
+
+<form action="{% url 'add-comment' recipe.id %}" method="post">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  <button type="submit">Add Comment</button>
+</form>
+{% endblock %}

@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('backend/django/recipeBlog/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Baskervville', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    align-items: center;
+}
+
+button {
+    transition: transform 0.3s ease-in-out;
+    font-size: 30px;
+    border-color: #fa957a;
+    background-color: #f9ab95;
+    padding: 10px;
+    margin: 10px;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 80px;
+}
+
+.recipe-image {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.recipe-card {
+    margin: 20px;
+    padding: 10px;
+    width: 240px;
+    display: grid;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+    background-color: #f9ab95;
+    border-radius: 8px;
+}
+
+.recipe-card:hover {
+    transform: scale(1.1);
+}
